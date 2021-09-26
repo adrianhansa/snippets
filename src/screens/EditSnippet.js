@@ -13,7 +13,6 @@ const EditSnippet = ({ match, history }) => {
   };
   useEffect(() => {
     getSnippet(match.params.id);
-    console.log(snippet);
   }, [match.params]);
 
   const validationSchema = yup.object({

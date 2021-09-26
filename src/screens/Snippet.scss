@@ -1,0 +1,25 @@
+.snippet {
+  background: var(--light-color);
+  margin: 1.5rem 0;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: var(--box-shadow);
+
+  .title,
+  .description,
+  .code {
+    margin-bottom: 1rem;
+  }
+
+  .code {
+    font-family: monospace;
+    font-size: 1.3rem;
+    background: var(--dark-color);
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .button {
+    background: cornsilk;
+  }
+}
