@@ -10,10 +10,11 @@ const validationSchema = yup.object({
   code: yup.string().required(),
 });
 
-const CreateSnippet = ({ hideForm }) => {
+const CreateSnippet = ({ hideForm, getSnippets }) => {
   const createSnippet = async (values) => {
     await axios.post("http://localhost:5000/snippets", values);
     hideForm();
+    getSnippets();
   };
   return (
     <div>

@@ -11,9 +11,14 @@ const Home = () => {
     const { data } = await axios.get("http://localhost:5000/snippets");
     setSnippets(data);
   };
+
+  const deleteSnippet = async (id) => {
+    await axios.delete(`http://localhost:5000/snippets/${id}`);
+    getSnippets();
+  };
   useEffect(() => {
     getSnippets();
-  }, [snippets]);
+  }, []);
   const hideForm = () => {
     setShowForm(false);
   };
@@ -23,11 +28,19 @@ const Home = () => {
       <button onClick={() => setShowForm(!showForm)}>
         {showForm ? "Hide Form" : "Create Snippet"}
       </button>
-      {showForm && <CreateSnippet hideForm={hideForm} />}
+      {showForm && (
+        <CreateSnippet hideForm={hideForm} getSnippets={getSnippets} />
+      )}
       <div className="snippetList">
         {snippets.length > 0 ? (
           snippets.map((snippet) => {
-            return <Snippet key={snippet._id} snippet={snippet} />;
+            return (
+              <Snippet
+                key={snippet._id}
+                snippet={snippet}
+                deleteSnippet={deleteSnippet}
+              />
+            );
           })
         ) : (
           <p>No snippets.</p>
